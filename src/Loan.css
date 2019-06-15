@@ -1,0 +1,19 @@
+.margin-divider{
+    display:flex;
+  
+}
+.divide-sliders{
+    width:100%;
+    padding:0 50px;
+}
+.divide-chart{
+    width:100%
+}
+.loan-heading{
+    color:#AB47BC;
+    margin-bottom:6rem;
+}
+.loan-heading span{
+    color:#4A148C;
+    font-size:2rem
+}
