@@ -1,24 +1,28 @@
 import React, { Component } from "react";
-import Slider from "react-rangeslider";
+// import Slider from "react-rangeslider";
 import "./Slider.css";
+import Slider, { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
+
 
 class VolumeSlider extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      volume: 0,
-      months: 6
+      volume: null,
+      months: null
     };
   }
 
   handleOnChange = value => {
-    this.setState(state => ({ ...state,volume: value }));
+    this.setState(state => ({ volume: value }));
     this.props.onValueChange(this.state.volume);
   };
   handleMonths = value => {
-    this.setState(state => ({...state, months: value }));
+    this.setState(state => ({ months: value }));
     this.props.onMonthChange(this.state.months);
   };
+  
 
   render() {
     let { volume, months } = this.state;
@@ -31,12 +35,13 @@ class VolumeSlider extends Component {
 
           <Slider
             className="slider"
-            value={volume}
-            orientation="horizontal"
-            onChange={this.handleOnChange}
+     
+          
+            onChange={a => this.handleOnChange(a)}
+            onAfterChange={a => this.handleOnChange(a)}
             min={500}
             max={5000}
-            step={50}
+            step={100}
           />
         </div>
         <div>
@@ -46,9 +51,9 @@ class VolumeSlider extends Component {
 
           <Slider
             className="slider"
-            value={months}
-            orientation="horizontal"
-            onChange={this.handleMonths}
+ 
+            onChange={a => this.handleMonths(a)}
+            onAfterChange={a => this.handleMonths(a)}
             min={6}
             max={24}
             step={1}
