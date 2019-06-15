@@ -17,3 +17,14 @@
     color:#4A148C;
     font-size:2rem
 }
+@media (max-width:600px){
+    .margin-divider{
+        flex-direction: column
+    }
+    .divide-sliders{
+        padding:10px
+    }
+    .loan-heading{
+        margin-bottom:1rem;
+    }
+}

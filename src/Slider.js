@@ -1,32 +1,27 @@
 import React, { Component } from "react";
 import Slider from "react-rangeslider";
-import './Slider.css'
+import "./Slider.css";
 
 class VolumeSlider extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       volume: 0,
-      months:6
+      months: 6
     };
   }
 
   handleOnChange = value => {
-   this.setState((state)=>(
-     {volume:value}
-   ))
-    this.props.onValueChange(this.state.volume)
+    this.setState(state => ({ ...state,volume: value }));
+    this.props.onValueChange(this.state.volume);
   };
-  handleMonths=value=>{
-    this.setState((state)=>(
-     
-      {months:value}
-    ))
-    this.props.onMonthChange(this.state.months)
-  }
+  handleMonths = value => {
+    this.setState(state => ({...state, months: value }));
+    this.props.onMonthChange(this.state.months);
+  };
 
   render() {
-    let { volume,months } = this.state;
+    let { volume, months } = this.state;
     return (
       <div className="slide">
         <div>
@@ -64,4 +59,4 @@ class VolumeSlider extends Component {
   }
 }
 
-export default VolumeSlider
+export default VolumeSlider;

@@ -1,7 +1,25 @@
+.slide{
+  width:50%;
+  margin-top:1rem;
+ 
+}
+.slider{
+
+   display: inline-block
+}
 .slider-heading{
     color:#AB47BC
 }
 .slider-heading span{
     color:#4A148C;
     font-size:2rem
+}
+@media (max-width:600px){
+    .slide{
+width:90%;
+margin-top:0rem;
+    }
+    .slider-heading{
+        font-size:1.5rem;
+    }
 }

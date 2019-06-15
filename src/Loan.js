@@ -14,37 +14,38 @@ export default class Loan extends Component {
       noOfMonths: 0,
 
       principalAmount: "",
-      monthlyPayment: ""
+      monthlyPayment: 0
     };
   }
 
   slider = a => {
-    this.setState(()=>(
-    { loan: a }));
+    this.setState((state) => ({...state, loan: a }));
     this.onFormSubmit();
   };
   onMonth = a => {
-    this.setState(()=>({ months: a }));
+    this.setState((state) => ({...state, months: a }));
     this.onFormSubmit();
   };
-  onFormSubmit =  () => {
+  onFormSubmit = () => {
     let loan = Number(this.state.loan);
     let months = Number(this.state.months);
 
     const url = `https://ftl-frontend-test.herokuapp.com/interest?amount=${loan}&numMonths=${months}`;
-   
-      axios.get(url).then(res=>{
-       
+
+    axios
+      .get(url)
+      .then(res => {
         this.setState(state => ({
+          ...state,
           intrest: res.data.interestRate,
           noOfMonths: res.data.numPayments,
-          monthlyPayment: (res.data.status!=="error"&& res.data.monthlyPayment.amount)
-        }))
-      }).catch(e=>{
-        console.log(e)
+          monthlyPayment:
+            res.data.status !== "error" && res.data.monthlyPayment.amount
+        }));
       })
-
-     
+      .catch(e => {
+        console.log(e);
+      });
   };
   render() {
     return (
